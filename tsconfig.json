@@ -1,0 +1,10 @@
+{
+  "extends": "@tsconfig/node-lts-strictest-esm/tsconfig.json",
+  "compilerOptions": {
+    "outDir": "dist",
+    "declaration": true,
+    "typeRoots": [
+      "./src/lib/types", "./node_modules/@types"]
+  },
+  "include": [ "src/**/*" ]
+}
