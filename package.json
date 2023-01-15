@@ -1,7 +1,7 @@
 {
   "name": "danbooru.js",
   "version": "1.0.0",
-  "description": "A wrapper for the Danbooru API, with request caching.",
+  "description": "A TypeScript wrapper for the Danbooru API.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "type": "module",

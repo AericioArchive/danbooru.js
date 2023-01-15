@@ -1,19 +1,34 @@
-import type { GetRequestOptions } from "../DanbooruJS";
+import type { GetRequestOptions } from "../danbooru";
 
-export function posts() {
-  function list(options = {}) {
+export const posts = {
+  list(options: PostsListOptions = {}): GetRequestOptions {
     return {
       route: "posts",
       searchParams: options,
-    } as GetRequestOptions;
-  }
+    };
+  },
 
-  function show(id: string, options = {}) {
+  show(id: number): GetRequestOptions {
     return {
       route: `posts/${id}`,
-      searchParams: options,
-    } as GetRequestOptions;
-  }
+    };
+  },
 
-  return { list, show };
-}
+  counts(tags: string): GetRequestOptions {
+    return {
+      route: "counts/posts",
+      searchParams: {
+        tags,
+      },
+    };
+  },
+};
+
+export type PostsListOptions = {
+  limit?: number;
+  page?: number;
+  tags?: string;
+  md5?: string;
+  random?: boolean;
+  raw?: boolean;
+};

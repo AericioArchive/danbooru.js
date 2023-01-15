@@ -1,19 +1,8 @@
 import type { DanbooruCategory } from "../types";
-import type { GetRequestOptions } from "../DanbooruJS";
-
-export type TagsListOptions = {
-  name_matches?: string;
-  fuzzy_name_matches?: string;
-  name?: string;
-  category?: DanbooruCategory;
-  hide_empty?: boolean;
-  has_wiki?: boolean;
-  has_artist?: boolean;
-  order?: string;
-};
+import type { GetRequestOptions } from "../danbooru";
 
 export const tags = {
-  list(options: TagsListOptions) {
+  list(options: TagsListOptions): GetRequestOptions {
     return {
       route: "tags",
       searchParams: {
@@ -26,6 +15,17 @@ export const tags = {
         "search[has_artist]": options.has_artist,
         "search[order]": options.order,
       },
-    } as GetRequestOptions;
+    };
   },
+};
+
+export type TagsListOptions = {
+  name_matches?: string;
+  fuzzy_name_matches?: string;
+  name?: string;
+  category?: DanbooruCategory;
+  hide_empty?: boolean;
+  has_wiki?: boolean;
+  has_artist?: boolean;
+  order?: string;
 };
