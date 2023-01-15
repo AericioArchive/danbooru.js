@@ -1,3 +1,7 @@
+export * from "./types/posts";
+export * from "./types/related_tag";
+export * from "./types/tags";
+
 export type DanbooruEnv = {
   api_url: string;
   auth?: {
