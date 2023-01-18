@@ -1,4 +1,4 @@
-import type { DanbooruCategory } from "../types";
+import type { RelatedTagOptions } from "../types";
 import type { GetRequestOptions } from "../danbooru";
 
 export function related_tag(query: string, options: RelatedTagOptions = {}): GetRequestOptions {
@@ -10,8 +10,3 @@ export function related_tag(query: string, options: RelatedTagOptions = {}): Get
     },
   };
 }
-
-export type RelatedTagOptions = {
-  limit?: number;
-  category?: DanbooruCategory;
-};

@@ -1,3 +1,10 @@
+import type { DanbooruCategory } from "../types";
+
+export type RelatedTagOptions = {
+  limit?: number;
+  category?: DanbooruCategory;
+};
+
 export interface RelatedTag {
   query: string;
   category: string;

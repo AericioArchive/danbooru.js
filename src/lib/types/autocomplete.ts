@@ -1,3 +1,23 @@
+export type AutocompleteOptions = {
+  limit?: number;
+  type?: AutocompleteTypes;
+};
+
+export enum AutocompleteTypes {
+  OPENSEARCH = "opensearch",
+  TAG_QUERY = "tag_query",
+  TAG = "tag",
+  ARTIST = "artist",
+  WIKI_PAGE = "wiki_page",
+  USER = "user",
+  MENTION = "mention",
+  POOL = "pool",
+  /** Requires Authentication */
+  FAVORITE_GROUP = "favorite_group",
+  /** Requires Authentication */
+  SAVED_SEARCH_LABEL = "saved_search_label",
+}
+
 export interface AutocompleteSearch {
   type: string;
   label: string;

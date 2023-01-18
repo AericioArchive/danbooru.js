@@ -1,4 +1,4 @@
-import type { DanbooruCategory } from "../types";
+import type { TagsListOptions } from "../types";
 import type { GetRequestOptions } from "../danbooru";
 
 export const tags = {
@@ -17,15 +17,4 @@ export const tags = {
       },
     };
   },
-};
-
-export type TagsListOptions = {
-  name_matches?: string;
-  fuzzy_name_matches?: string;
-  name?: string;
-  category?: DanbooruCategory;
-  hide_empty?: boolean;
-  has_wiki?: boolean;
-  has_artist?: boolean;
-  order?: string;
 };

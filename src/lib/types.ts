@@ -1,3 +1,4 @@
+export * from "./types/autocomplete";
 export * from "./types/posts";
 export * from "./types/related_tag";
 export * from "./types/tags";

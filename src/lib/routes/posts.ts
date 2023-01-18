@@ -1,4 +1,5 @@
 import type { GetRequestOptions } from "../danbooru";
+import type { PostsListOptions } from "../types/posts";
 
 export const posts = {
   list(options: PostsListOptions = {}): GetRequestOptions {
@@ -22,13 +23,4 @@ export const posts = {
       },
     };
   },
-};
-
-export type PostsListOptions = {
-  limit?: number;
-  page?: number;
-  tags?: string;
-  md5?: string;
-  random?: boolean;
-  raw?: boolean;
 };

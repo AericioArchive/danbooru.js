@@ -1,3 +1,16 @@
+import type { DanbooruCategory } from "../types";
+
+export type TagsListOptions = {
+  name_matches?: string;
+  fuzzy_name_matches?: string;
+  name?: string;
+  category?: DanbooruCategory;
+  hide_empty?: boolean;
+  has_wiki?: boolean;
+  has_artist?: boolean;
+  order?: string;
+};
+
 export interface Tags {
   id: number;
   name: string;

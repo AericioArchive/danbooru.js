@@ -1,3 +1,12 @@
+export type PostsListOptions = {
+  limit?: number;
+  page?: number;
+  tags?: string;
+  md5?: string;
+  random?: boolean;
+  raw?: boolean;
+};
+
 export interface Post {
   id: number;
   created_at: Date;
