@@ -1,5 +1,6 @@
 import got, { Got, SearchParameters } from "got";
 import { DanbooruEnv, RequestMethods } from "./types";
+import type { OptionsOfJSONResponseBody } from "got/dist/source/types";
 
 export type GetRequestOptions = {
   route: string;
@@ -33,13 +34,16 @@ export class DanbooruJS {
   }
 
   public async request(method: RequestMethods, route: string, searchParams?: SearchParameters) {
-    return this._got(new URL(route + ".json", this.env.api_url), {
+    const options = {
       method,
-      searchParams: {
-        login: this.env.auth?.login,
-        api_key: this.env.auth?.key,
-        ...searchParams,
-      },
-    }).json();
+      searchParams,
+    } as OptionsOfJSONResponseBody;
+
+    if (this.env.auth) {
+      options.username = this.env.auth.login;
+      options.password = this.env.auth.key;
+    }
+
+    return this._got(new URL(route + ".json", this.env.api_url), options).json();
   }
 }
