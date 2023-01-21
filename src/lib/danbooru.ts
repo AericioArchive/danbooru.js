@@ -1,4 +1,4 @@
-import got, { Got, SearchParameters } from "got";
+import got, { Got, RequestError, SearchParameters } from "got";
 import { DanbooruEnv, RequestMethods } from "./types";
 import type { OptionsOfJSONResponseBody } from "got/dist/source/types";
 
@@ -42,6 +42,20 @@ export class DanbooruJS {
       options.password = this.env.auth.key;
     }
 
-    return this._got(new URL(route + ".json", this.env.api_url), options).json();
+    return this._got(new URL(route + ".json", this.env.api_url), options)
+      .then((res) => res.body)
+      .catch((err: RequestError) => {
+        if (err.code === "ERR_NON_2XX_3XX_RESPONSE") {
+          // Show the error message returned by the API.
+          throw new Error(err.code, {
+            cause: {
+              url: err.request?.requestUrl?.toJSON(),
+              res: JSON.parse(<string>err.response?.body),
+            },
+          });
+        }
+        // Show the default error trace.
+        throw err;
+      });
   }
 }
