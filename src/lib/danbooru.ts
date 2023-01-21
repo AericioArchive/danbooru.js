@@ -4,7 +4,7 @@ import type { OptionsOfJSONResponseBody } from "got/dist/source/types";
 
 export type GetRequestOptions = {
   route: string;
-  searchParams?: SearchParameters;
+  searchParams?: SearchParameters | undefined;
 };
 
 export class DanbooruJS {
@@ -12,8 +12,6 @@ export class DanbooruJS {
     api_url: "https://danbooru.donmai.us/",
   };
   private _got: Got = got;
-
-  public constructor() {}
 
   get gotInstance(): Got {
     return this._got;

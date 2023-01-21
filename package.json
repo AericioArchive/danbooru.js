@@ -10,7 +10,7 @@
   "scripts": {
     "build": "tsc",
     "build:watch": "tsc --watch",
-    "dev": "tsx watch src/index",
+    "dumpRequest": "tsx watch scripts/dumpRequest",
     "lint": "eslint --fix --ignore-path .gitignore **/**/*.ts",
     "lint:check": "eslint --ignore-path .gitignore **/**/*.ts"
   },

@@ -1,17 +1,17 @@
 import type { DanbooruCategory } from "../types";
 
 export type TagsListOptions = {
-  name_matches?: string;
-  fuzzy_name_matches?: string;
-  name?: string;
-  category?: DanbooruCategory;
-  hide_empty?: boolean;
-  has_wiki?: boolean;
-  has_artist?: boolean;
-  order?: string;
+  name_matches: string;
+  fuzzy_name_matches: string;
+  name: string;
+  category: DanbooruCategory;
+  hide_empty: boolean;
+  has_wiki: boolean;
+  has_artist: boolean;
+  order: string;
 };
 
-export interface Tags {
+export interface Tag {
   id: number;
   name: string;
   post_count: number;

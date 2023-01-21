@@ -1,10 +1,10 @@
 export type PostsListOptions = {
-  limit?: number;
-  page?: number;
-  tags?: string;
-  md5?: string;
-  random?: boolean;
-  raw?: boolean;
+  limit: number;
+  page: number;
+  tags: string;
+  md5: string;
+  random: boolean;
+  raw: boolean;
 };
 
 export interface Post {
@@ -55,6 +55,6 @@ export interface Post {
   preview_file_url: string;
 }
 
-export interface PostCounts {
+export interface PostCount {
   posts: number;
 }

@@ -2,7 +2,7 @@ import type { GetRequestOptions } from "../danbooru";
 import type { PostsListOptions } from "../types/posts";
 
 export const posts = {
-  list(options: PostsListOptions = {}): GetRequestOptions {
+  list(options?: Partial<PostsListOptions>): GetRequestOptions {
     return {
       route: "posts",
       searchParams: options,
@@ -15,7 +15,7 @@ export const posts = {
     };
   },
 
-  counts(tags: string): GetRequestOptions {
+  count(tags: string): GetRequestOptions {
     return {
       route: "counts/posts",
       searchParams: {

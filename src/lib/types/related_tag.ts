@@ -1,8 +1,8 @@
 import type { DanbooruCategory } from "../types";
 
 export type RelatedTagOptions = {
-  limit?: number;
-  category?: DanbooruCategory;
+  limit: number;
+  category: DanbooruCategory;
 };
 
 export interface RelatedTag {

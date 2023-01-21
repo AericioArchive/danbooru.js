@@ -1,6 +1,6 @@
 export type AutocompleteOptions = {
-  limit?: number;
-  type?: AutocompleteTypes;
+  limit: number;
+  type: AutocompleteTypes;
 };
 
 export enum AutocompleteTypes {
