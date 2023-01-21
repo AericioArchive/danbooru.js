@@ -1,6 +1,9 @@
 import type { TagsListOptions } from "../types";
 import type { GetRequestOptions } from "../danbooru";
 
+/**
+ * @see {@link https://github.com/danbooru/danbooru/blob/master/app/models/tag.rb}
+ */
 export const tags = {
   list(options?: Partial<TagsListOptions>): GetRequestOptions {
     return {

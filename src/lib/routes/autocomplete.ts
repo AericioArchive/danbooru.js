@@ -1,9 +1,8 @@
-import type {GetRequestOptions} from "../danbooru";
-import type {AutocompleteOptions} from "../types/autocomplete";
-import {AutocompleteTypes} from "../types/autocomplete";
+import type { GetRequestOptions } from "../danbooru";
+import type { AutocompleteOptions } from "../types/autocomplete";
+import { AutocompleteTypes } from "../types/autocomplete";
 
 /**
- * Autocomplete controller
  * @see {@link https://github.com/danbooru/danbooru/blob/master/app/logical/autocomplete_service.rb}
  */
 export function autocomplete(query: string, options: Partial<AutocompleteOptions>): GetRequestOptions {

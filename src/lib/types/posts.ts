@@ -5,7 +5,15 @@ export type PostsListOptions = {
   md5: string;
   random: boolean;
   raw: boolean;
+  rating: Rating;
 };
+
+export enum Rating {
+  GENERAL = "g",
+  SENSITIVE = "s",
+  QUESTIONABLE = "q",
+  EXPLICIT = "e",
+}
 
 export interface Post {
   id: number;
@@ -15,7 +23,7 @@ export interface Post {
   source: string;
   md5: string;
   last_comment_bumped_at: Date | null;
-  rating: string;
+  rating: Rating;
   image_width: number;
   image_height: number;
   tag_string: string;

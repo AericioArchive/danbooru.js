@@ -1,6 +1,9 @@
 import type { GetRequestOptions } from "../danbooru";
 import type { PostsListOptions } from "../types/posts";
 
+/**
+ * @see {@link https://github.com/danbooru/danbooru/blob/master/app/models/post.rb}
+ */
 export const posts = {
   list(options?: Partial<PostsListOptions>): GetRequestOptions {
     return {
