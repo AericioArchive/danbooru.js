@@ -43,7 +43,7 @@ export class DanbooruJS {
     }
 
     return this._got(new URL(route + ".json", this.env.api_url), options)
-      .then((res) => res.body)
+      .then((res) => JSON.parse(<string>res.body))
       .catch((err: RequestError) => {
         if (err.code === "ERR_NON_2XX_3XX_RESPONSE") {
           // Show the error message returned by the API.
