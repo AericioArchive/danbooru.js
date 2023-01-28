@@ -64,5 +64,7 @@ export interface Post {
 }
 
 export interface PostCount {
-  posts: number;
+  counts: {
+    posts: number;
+  };
 }
