@@ -4,12 +4,11 @@ export * from "./types/related_tag";
 export * from "./types/tags";
 
 export type DanbooruEnv = {
-  api_url: string;
-  auth?: {
-    login: string;
-    key: string;
-  };
+  url: string;
+  auth?: string;
 };
+
+export type SearchParameters = Record<string, string | number | boolean | null | undefined>
 
 export enum RequestMethods {
   GET = "GET",

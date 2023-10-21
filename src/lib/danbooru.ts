@@ -1,6 +1,5 @@
-import got, { Got, RequestError, SearchParameters } from "got";
-import { DanbooruEnv, RequestMethods } from "./types";
-import type { OptionsOfJSONResponseBody } from "got/dist/source/types";
+import { DanbooruEnv, RequestMethods, SearchParameters } from "./types";
+import { Client, Dispatcher } from "undici";
 
 export type GetRequestOptions = {
   route: string;
@@ -8,22 +7,15 @@ export type GetRequestOptions = {
 };
 
 export class DanbooruJS {
-  public readonly env: DanbooruEnv = {
-    api_url: "https://danbooru.donmai.us/",
-  };
-  private _got: Got = got;
+  private _env: DanbooruEnv = { url: "https://danbooru.donmai.us" };
+  private _httpClient: Client = new Client(this._env.url);
 
-  get gotInstance(): Got {
-    return this._got;
+  get httpClient(): Client {
+    return this._httpClient;
   }
 
-  public setApiUrl(api_url: string) {
-    this.env.api_url = api_url;
-    return this;
-  }
-
-  public setLogin(login: string, key: string) {
-    this.env.auth = { login, key };
+  public login(username: string, key: string) {
+    this._env.auth = Buffer.from(`${username}:${key}`).toString("base64");
     return this;
   }
 
@@ -34,28 +26,31 @@ export class DanbooruJS {
   public async request(method: RequestMethods, route: string, searchParams?: SearchParameters) {
     const options = {
       method,
-      searchParams,
-    } as OptionsOfJSONResponseBody;
+      path: `/${route}.json`,
+      query: searchParams,
+      headers: {"User-Agent": "danboorujs/1.0.0"},
+      maxRedirections: 5
+    } as Dispatcher.RequestOptions;
 
-    if (this.env.auth) {
-      options.username = this.env.auth.login;
-      options.password = this.env.auth.key;
+    if (this._env.auth) {
+      options.headers = { ...options.headers, Authorization: `Basic ${this._env.auth}` };
     }
 
-    return this._got(new URL(route + ".json", this.env.api_url), options)
-      .then((res) => JSON.parse(<string>res.body))
-      .catch((err: RequestError) => {
-        if (err.code === "ERR_NON_2XX_3XX_RESPONSE") {
-          // Show the error message returned by the API.
-          throw new Error(err.code, {
-            cause: {
-              url: err.request?.requestUrl?.toJSON(),
-              res: JSON.parse(<string>err.response?.body),
-            },
-          });
-        }
-        // Show the default error trace.
-        throw err;
-      });
+    const { statusCode, headers, body} = await this.httpClient.request(options);
+
+    if (statusCode !== 200) {
+      let message = "unexpected status code";
+      const cause = {
+        statusCode,
+        options
+      } as Record<string, unknown>
+
+      if (headers["cf-mitigated"]) message = "cloudflare challenge encountered"
+      else cause["body"] = await body.json();
+
+      throw new Error(message, { cause });
+    }
+
+    return await body.json() as Record<string, any>;
   }
 }
