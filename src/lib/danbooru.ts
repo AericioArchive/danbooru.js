@@ -1,11 +1,6 @@
-import { DanbooruEnv, RequestMethods, SearchParameters } from "./types";
+import { DanbooruEnv, GetRequestOptions, RequestMethods, SearchParameters } from "./types";
 import { Client, Dispatcher } from "undici";
 import type { IncomingHttpHeaders } from "undici/types/header";
-
-export type GetRequestOptions = {
-  route: string;
-  searchParams?: SearchParameters | undefined;
-};
 
 export class DanbooruJS {
   private _env: DanbooruEnv = { url: "https://danbooru.donmai.us" };

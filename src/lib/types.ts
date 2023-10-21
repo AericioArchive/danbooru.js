@@ -8,7 +8,7 @@ export type DanbooruEnv = {
   auth?: string;
 };
 
-export type SearchParameters = Record<string, string | number | boolean | null | undefined>
+export type SearchParameters = Record<string, string | number | boolean | null | undefined>;
 
 export enum RequestMethods {
   GET = "GET",
@@ -16,6 +16,11 @@ export enum RequestMethods {
   PUT = "PUT",
   DELETE = "DELETE",
 }
+
+export type GetRequestOptions = {
+  route: string;
+  searchParams?: SearchParameters | undefined;
+};
 
 export enum DanbooruCategory {
   GENERAL = 0,
