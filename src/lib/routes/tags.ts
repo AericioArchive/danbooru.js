@@ -1,5 +1,4 @@
-import type { TagsListOptions } from "../types";
-import type { GetRequestOptions } from "../danbooru";
+import type { GetRequestOptions, TagsListOptions } from "../types";
 
 /**
  * @see {@link https://github.com/danbooru/danbooru/blob/master/app/models/tag.rb}
