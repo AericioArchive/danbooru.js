@@ -12,7 +12,7 @@ export function autocomplete(query: string, options: Partial<AutocompleteOptions
     route: "autocomplete",
     searchParams: {
       "search[query]": query,
-      "search[type]": options.type ?? AutocompleteTypes.OPENSEARCH,
+      "search[type]": type ?? AutocompleteTypes.OPENSEARCH,
       ...rest,
     },
   };

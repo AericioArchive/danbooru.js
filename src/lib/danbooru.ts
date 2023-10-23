@@ -1,12 +1,18 @@
 import { DanbooruEnv, GetRequestOptions, RequestMethods, SearchParameters } from "./types";
 import { Client, Dispatcher } from "undici";
 import type { IncomingHttpHeaders } from "undici/types/header";
+import type { DanbooruCache } from "./cache";
 
 export class DanbooruJS {
   private _env: DanbooruEnv = { url: "https://danbooru.donmai.us" };
   private _httpClient: Client = new Client(this._env.url);
-
   private _headers: IncomingHttpHeaders = { "User-Agent": "danboorujs/1.0.0" };
+
+  private readonly _cache: DanbooruCache | undefined;
+
+  constructor(cache?: DanbooruCache) {
+    this._cache = cache;
+  }
 
   get httpClient(): Client {
     return this._httpClient;
@@ -23,6 +29,7 @@ export class DanbooruJS {
   }
 
   public async request(method: RequestMethods, route: string, searchParams?: SearchParameters) {
+    const key = `${route}:${JSON.stringify(searchParams)}`;
     const options = {
       method,
       path: `/${route}.json`,
@@ -30,6 +37,8 @@ export class DanbooruJS {
       headers: this._headers,
       maxRedirections: 5,
     } as Dispatcher.RequestOptions;
+
+    if (this._cache && (await this._cache.exists(key))) return this._cache.get(key);
 
     const { statusCode, headers, body } = await this.httpClient.request(options);
 
@@ -46,6 +55,10 @@ export class DanbooruJS {
       throw new Error(message, { cause });
     }
 
-    return (await body.json()) as Record<string, any>;
+    const json = (await body.json()) as Record<string, any>;
+
+    if (this._cache) this._cache.set(key, json);
+
+    return json;
   }
 }
