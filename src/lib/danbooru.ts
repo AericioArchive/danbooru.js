@@ -1,6 +1,5 @@
-import got, { Got, RequestError, SearchParameters } from "got";
+import got, { Got, type OptionsOfJSONResponseBody, RequestError, SearchParameters } from "got";
 import { DanbooruEnv, type GetRequestOptions, RequestMethods } from "./types";
-import type { OptionsOfJSONResponseBody } from "got/dist/source/types";
 import type { DanbooruCache } from "./cache";
 
 export class DanbooruJS {

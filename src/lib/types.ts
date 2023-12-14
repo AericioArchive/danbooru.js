@@ -1,3 +1,5 @@
+import type { SearchParameters } from "got";
+
 export * from "./types/autocomplete";
 export * from "./types/posts";
 export * from "./types/related_tag";
@@ -10,8 +12,6 @@ export type DanbooruEnv = {
     key: string;
   };
 };
-
-export type SearchParameters = Record<string, string | number | boolean | null | undefined>;
 
 export enum RequestMethods {
   GET = "GET",
