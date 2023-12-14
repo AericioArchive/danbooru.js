@@ -5,6 +5,7 @@ import { DanbooruCategory, DanbooruJS } from "../src";
 import { posts } from "../src/lib/routes/posts";
 import { related_tag } from "../src/lib/routes/related_tag";
 import { tags } from "../src/lib/routes/tags";
+import { DanbooruCache } from "../src/lib/cache";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -15,7 +16,8 @@ function dumpToJson(data: unknown, type: number) {
   });
 }
 
-const danbooru = new DanbooruJS();
+const cache = new DanbooruCache("localhost", 6379);
+const danbooru = new DanbooruJS(cache);
 
 async function makeRequest() {
   const data = await Promise.all([
@@ -25,7 +27,7 @@ async function makeRequest() {
     danbooru.get(related_tag("genshin_impact", { limit: 1, category: DanbooruCategory.GENERAL })),
     danbooru.get(tags.list({ name: "genshin_impact" })),
   ]);
-  data.forEach((d) => console.log(d));
+  // data.forEach((d) => console.log(d));
   // data.forEach((d, i) => dumpToJson(d, i));
 }
 

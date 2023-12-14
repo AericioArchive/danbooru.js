@@ -15,11 +15,12 @@
     "lint:check": "eslint --ignore-path .gitignore **/**/*.ts"
   },
   "dependencies": {
+    "ioredis": "^5.3.2",
     "undici": "^5.26.4"
   },
   "devDependencies": {
     "@tsconfig/node-lts-strictest-esm": "^18.12.1",
-    "@types/node": "^18.11.18",
+    "@types/node": "^18.12.1",
     "@typescript-eslint/eslint-plugin": "^5.48.0",
     "@typescript-eslint/parser": "^5.48.0",
     "eslint": "^8.31.0",
