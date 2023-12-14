@@ -27,7 +27,7 @@ async function makeRequest() {
     danbooru.get(related_tag("genshin_impact", { limit: 1, category: DanbooruCategory.GENERAL })),
     danbooru.get(tags.list({ name: "genshin_impact" })),
   ]);
-  // data.forEach((d) => console.log(d));
+  data.forEach((d: string) => console.log(JSON.parse(d)));
   // data.forEach((d, i) => dumpToJson(d, i));
 }
 

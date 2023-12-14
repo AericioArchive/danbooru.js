@@ -4,8 +4,11 @@ export * from "./types/related_tag";
 export * from "./types/tags";
 
 export type DanbooruEnv = {
-  url: string;
-  auth?: string;
+  api_url: string;
+  auth?: {
+    login: string;
+    key: string;
+  };
 };
 
 export type SearchParameters = Record<string, string | number | boolean | null | undefined>;
