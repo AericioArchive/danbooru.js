@@ -1,4 +1,4 @@
-import type { GetRequestOptions, RelatedTagOptions } from "../types";
+import type { GetRequestOptions, RelatedTagOptions } from "../types.js";
 
 /**
  * @see {@link https://github.com/danbooru/danbooru/blob/master/app/logical/related_tag_query.rb}

@@ -1,9 +1,9 @@
 import type { SearchParameters } from "got";
 
-export * from "./types/autocomplete";
-export * from "./types/posts";
-export * from "./types/related_tag";
-export * from "./types/tags";
+export * from "./types/autocomplete.js";
+export * from "./types/posts.js";
+export * from "./types/related_tag.js";
+export * from "./types/tags.js";
 
 export type DanbooruEnv = {
   api_url: string;

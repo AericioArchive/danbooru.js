@@ -1,5 +1,5 @@
-import type { PostsListOptions } from "../types/posts";
-import type { GetRequestOptions } from "../types";
+import type { PostsListOptions } from "../types/posts.js";
+import type { GetRequestOptions } from "../types.js";
 
 /**
  * @see {@link https://github.com/danbooru/danbooru/blob/master/app/models/post.rb}

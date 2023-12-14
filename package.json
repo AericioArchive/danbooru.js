@@ -15,19 +15,20 @@
     "lint:check": "eslint --ignore-path .gitignore **/**/*.ts"
   },
   "dependencies": {
-    "ioredis": "^5.3.2",
-    "got": "^12.6.1"
+    "got": "^13.0.0",
+    "ioredis": "^5.3.2"
   },
   "devDependencies": {
-    "@tsconfig/node-lts-strictest-esm": "^18.12.1",
+    "@tsconfig/node18": "^18.2.2",
+    "@tsconfig/strictest": "^2.0.2",
     "@types/node": "^18.12.1",
     "@typescript-eslint/eslint-plugin": "^5.48.0",
     "@typescript-eslint/parser": "^5.48.0",
     "eslint": "^8.31.0",
     "eslint-config-prettier": "^8.6.0",
     "prettier": "^2.8.1",
-    "tsx": "^3.12.1",
-    "typescript": "^4.9.4"
+    "tsx": "^4.6.2",
+    "typescript": "^5.3.3"
   },
   "volta": {
     "node": "18.12.1",

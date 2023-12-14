@@ -1,4 +1,4 @@
-import type { DanbooruCategory } from "../types";
+import type { DanbooruCategory } from "../types.js";
 
 export type TagsListOptions = {
   name_matches: string;

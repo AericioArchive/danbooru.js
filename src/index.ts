@@ -1,3 +1,3 @@
-export * from "./lib/danbooru";
-export * from "./lib/routes";
-export * from "./lib/types";
+export * from "./lib/danbooru.js";
+export * from "./lib/routes.js";
+export * from "./lib/types.js";

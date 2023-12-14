@@ -1,6 +1,6 @@
-import type { AutocompleteOptions } from "../types/autocomplete";
-import { AutocompleteTypes } from "../types/autocomplete";
-import type { GetRequestOptions } from "../types";
+import type { AutocompleteOptions } from "../types/autocomplete.js";
+import { AutocompleteTypes } from "../types/autocomplete.js";
+import type { GetRequestOptions } from "../types.js";
 
 /**
  * @see {@link https://github.com/danbooru/danbooru/blob/master/app/logical/autocomplete_service.rb}

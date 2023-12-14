@@ -1,11 +1,11 @@
-import fs from "fs";
-import path, { dirname } from "path";
-import { fileURLToPath } from "url";
-import { DanbooruCategory, DanbooruJS } from "../src";
-import { posts } from "../src/lib/routes/posts";
-import { related_tag } from "../src/lib/routes/related_tag";
-import { tags } from "../src/lib/routes/tags";
-import { DanbooruCache } from "../src/lib/cache";
+import fs from "node:fs";
+import path, { dirname } from "node:path";
+import { fileURLToPath } from "node:url";
+import { DanbooruCategory, DanbooruJS } from "../src/index.js";
+import { posts } from "../src/lib/routes/posts.js";
+import { related_tag } from "../src/lib/routes/related_tag.js";
+import { tags } from "../src/lib/routes/tags.js";
+import { DanbooruCache } from "../src/lib/cache.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -27,7 +27,7 @@ async function makeRequest() {
     danbooru.get(related_tag("genshin_impact", { limit: 1, category: DanbooruCategory.GENERAL })),
     danbooru.get(tags.list({ name: "genshin_impact" })),
   ]);
-  data.forEach((d: string) => console.log(JSON.parse(d)));
+  data.forEach((d: string) => console.log(d));
   // data.forEach((d, i) => dumpToJson(d, i));
 }
 

@@ -1,6 +1,6 @@
 import got, { Got, type OptionsOfJSONResponseBody, RequestError, SearchParameters } from "got";
-import { DanbooruEnv, type GetRequestOptions, RequestMethods } from "./types";
-import type { DanbooruCache } from "./cache";
+import { DanbooruEnv, type GetRequestOptions, RequestMethods } from "./types.js";
+import type { DanbooruCache } from "./cache.js";
 
 export class DanbooruJS {
   private _env: DanbooruEnv = { api_url: "https://danbooru.donmai.us/" };
